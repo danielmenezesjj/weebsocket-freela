@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const cors = require('cors')
 const app = express();
 const PORT = 3000;
 
@@ -9,7 +9,7 @@ const WEBHOOK_TOKEN = "wppviptokensecreto";
 
 // Middleware para processar requisições com JSON
 app.use(bodyParser.json());
-
+app.use(cors())
 // Rota para receber o webhook
 app.post('/webhook', (req, res) => {
     const token = req.headers['x-webhook-token']; // Header com o token
